@@ -4,6 +4,8 @@ document.addEventListener('DOMContentLoaded', function () {
     const mainContent = document.getElementById('main-content');
     const toggleBtn = document.getElementById('sidebar-toggle');
 
+    if (!toggleBtn) return;
+
     function toggleSidebar() {
         sidebar.classList.toggle('collapsed');
         mainContent.classList.toggle('sidebar-collapsed');
@@ -15,15 +17,14 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     }
 
-    if (toggleBtn) toggleBtn.addEventListener('click', toggleSidebar);
+    toggleBtn.addEventListener('click', toggleSidebar);
 
+    // Responsif
     function checkScreenSize() {
         if (window.innerWidth <= 991) {
-            if (!sidebar.classList.contains('collapsed')) {
-                sidebar.classList.add('collapsed');
-                mainContent.classList.add('sidebar-collapsed');
-                toggleBtn.querySelector('i').className = 'fas fa-chevron-right';
-            }
+            sidebar.classList.add('collapsed');
+            mainContent.classList.add('sidebar-collapsed');
+            toggleBtn.querySelector('i').className = 'fas fa-chevron-right';
         } else {
             sidebar.classList.remove('collapsed');
             mainContent.classList.remove('sidebar-collapsed');

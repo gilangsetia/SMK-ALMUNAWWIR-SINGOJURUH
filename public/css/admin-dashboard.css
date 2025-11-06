@@ -1,7 +1,7 @@
 /* public/css/admin-dashboard.css */
 :root {
   --navbar-height: 72px;
-  --sidebar-width: 260px;
+  --sidebar-width: 300px;
   --sidebar-collapsed-width: 72px;
   --sidebar-bg: #1e3a8a;           /* Biru tua utama */
   --sidebar-text: #cbd5e1;         /* Abu-abu terang */
@@ -78,10 +78,15 @@ body {
   margin-left: var(--sidebar-collapsed-width);
 }
 
-/* Sidebar Header & Items */
 .sidebar-header {
-  padding: 1.25rem 1.5rem 0.75rem;
+  padding: 1.25rem 1rem 0.75rem; /* kurangi padding samping */
   border-bottom: 1px solid rgba(255,255,255,0.12);
+  text-align: center; /* ← tambahkan ini */
+}
+.sidebar-header h6 {
+  margin: 0;
+  font-size: 1rem;
+  letter-spacing: 0.5px;
 }
 #sidebar .nav-link {
   color: var(--sidebar-text);
@@ -127,15 +132,16 @@ body {
   margin-right: 0;
 }
 
-/* Toggle Button */
+/* Sidebar Footer & Toggle Button (Bottom) */
+.sidebar-footer {
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
 #sidebar-toggle {
-  position: absolute;
-  top: 16px;
-  right: 16px;
-  width: 36px;
-  height: 36px;
+  width: 100%;
+  height: 40px;
   border-radius: 8px;
-  background: rgba(255,255,255,0.15);
+  background: rgba(255, 255, 255, 0.15);
   color: white;
   border: none;
   display: flex;
@@ -143,13 +149,22 @@ body {
   justify-content: center;
   cursor: pointer;
   transition: var(--transition);
+  font-size: 1rem;
 }
+
 #sidebar-toggle:hover {
-  background: rgba(255,255,255,0.25);
-  transform: scale(1.05);
+  background: rgba(255, 255, 255, 0.25);
+  transform: scale(1.02);
 }
+
+/* Saat collapsed, ubah ikon & lebar */
 #sidebar.collapsed #sidebar-toggle {
-  right: 12px;
+  width: 100%;
+  justify-content: center;
+}
+
+#sidebar.collapsed #sidebar-toggle i {
+  transform: rotate(180deg);
 }
 
 /* Cards & UI */
@@ -180,13 +195,22 @@ body {
 .stat-card-green { background: #10b981; color: white; }
 .stat-card-gray { background: #6b7280; color: white; }
 
-/* Responsive */
-@media (max-width: 991.98px) {
-  #sidebar {
-    width: var(--sidebar-collapsed-width);
-  }
-  #main-content {
-    margin-left: var(--sidebar-collapsed-width);
-    padding: 1.25rem;
-  }
+/* Submenu Icons */
+.submenu-icon {
+  width: 20px;
+  font-size: 0.95rem;
+  text-align: center;
+  margin-right: 12px;
+  color: rgba(203, 213, 225, 0.8);
+  transition: var(--transition);
+}
+
+#sidebar .collapse .nav-link:hover .submenu-icon,
+#sidebar .collapse .nav-link.active .submenu-icon {
+  color: white;
+}
+
+/* Saat sidebar collapsed, sembunyikan ikon submenu juga */
+#sidebar.collapsed .submenu-icon {
+  display: none;
 }

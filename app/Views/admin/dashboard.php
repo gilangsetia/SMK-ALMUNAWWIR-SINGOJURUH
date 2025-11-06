@@ -2,7 +2,7 @@
 <?= $this->section('content') ?>
 
 <div class="container-fluid">
-  <h1 style="color: #1e3a8a;">Dashboard Absensi</h1>
+  <h1 style="color: #1e3a8a; padding-bottom: 2rem;">Dashboard Absensi</h1>
 
   <div class="row g-4 mb-4">
     <div class="col-md-3">
